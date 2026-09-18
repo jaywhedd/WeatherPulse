@@ -16,6 +16,9 @@ ETL pipeline for weather data ingestion, transformation, and threshold alerting 
 ├── notebooks/
 │   └── analysis.ipynb    # trend queries + charts for demo
 ├── requirements.txt
-└── README.md ```
+└── README.md 
+```
+
+
 #### WeThinkCode_ verification 
 WTC-3G57YLHT
