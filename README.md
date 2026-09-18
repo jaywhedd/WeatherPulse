@@ -2,7 +2,7 @@
 ETL pipeline for weather data ingestion, transformation, and threshold alerting with PostgreSQL + Python
 
 ## Repo Structure 
-weather-etl-pipeline/
+``` weather-etl-pipeline/
 ├── src/
 │   ├── extract.py       # calls Open-Meteo API, writes to raw_weather
 │   ├── transform.py     # raw_weather -> fact_weather (parses JSONB)
@@ -16,7 +16,6 @@ weather-etl-pipeline/
 ├── notebooks/
 │   └── analysis.ipynb    # trend queries + charts for demo
 ├── requirements.txt
-└── README.md
-
+└── README.md ```
 #### WeThinkCode_ verification 
 WTC-3G57YLHT
