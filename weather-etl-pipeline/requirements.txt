@@ -1,0 +1,20 @@
+# Core
+psycopg2-binary>=2.9.9
+pyyaml>=6.0
+
+# Scheduling
+APScheduler>=3.10.4
+
+# HTTP
+requests>=2.31.0
+
+# Notebooks & Visualization
+jupyter>=1.0.0
+pandas>=2.2.0
+matplotlib>=3.8.0
+seaborn>=0.13.0
+
+# Dev / Linting
+pytest>=8.0.0
+pytest-cov>=4.1.0
+ruff>=0.3.0
