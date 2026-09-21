@@ -31,8 +31,7 @@ Open-Meteo API -> Extract -> raw_weather -> Transform -> fact_weather
 - Python
 - PostgreSQL
 - Open-Meteo API
-- `requests`, `psycopg2`, `APScheduler`, `python-dotenv`, `PyYAML`
-- Jupyter Notebook, pandas, and matplotlib
+- `psycopg2`, `requests`, `APScheduler`, `PyYAML`, `pandas`, `matplotlib`
 
 ## Wiki Pages
 
@@ -208,6 +207,10 @@ ORDER BY observation_date;
 ```
 
 ## Testing
+
+> **Status note (trimmed `requirements.txt`):** Formal pytest suites are deferred until after the demo — `pytest`/`pytest-cov` were removed from the dependencies. The immediate priority is the manual end-to-end check (final demo checklist below`. Once the pipeline works, re-add `pytest` and add pure-logic tests (threshold eval, JSON transformation` if time allows.
+
+
 
 ### Unit Tests
 
