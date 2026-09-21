@@ -1,3 +1,5 @@
+
+#meteo api needs cordinaates to see which city its extracting data from
 cities:
   - name: Johannesburg
     country: South Africa
@@ -20,7 +22,7 @@ cities:
     latitude: -29.0852
     longitude: 26.1596
 
-# Alert thresholds
+# Alert thresholds always to set alerts for certain temps
 alerts:
   temperature_max_c: 40
   temperature_min_c: -10
