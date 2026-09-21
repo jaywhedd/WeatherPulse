@@ -1,0 +1,11 @@
+{
+    // Use the project virtual environment as the Python interpreter
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+
+    // Auto-activate the venv in every new integrated terminal so `python`
+    // and `pip` resolve to the venv instead of the broken system stub
+    "python.terminal.activateEnvironment": true,
+
+    // Run files from the workspace root so relative imports/config paths work
+    "python.terminal.executeInFileDir": false
+}
