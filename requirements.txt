@@ -10,4 +10,3 @@ requests>=2.31.0
 
 # Notebooks & Visualization
 pandas>=2.2.0
-matplotlib>=3.8.0
