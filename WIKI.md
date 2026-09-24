@@ -15,7 +15,7 @@ WeatherPulse extracts observations from the Open-Meteo API, preserves raw respon
 - Transform JSON into normalized PostgreSQL tables.
 - Detect severe weather with threshold-based alerts.
 - Schedule recurring pipeline runs.
-- Support backfill, trend analysis, and demonstrations.
+- Support trend analysis and demonstrations.
 
 ### Pipeline Overview
 
@@ -31,7 +31,7 @@ Open-Meteo API -> Extract -> raw_weather -> Transform -> fact_weather
 - Python
 - PostgreSQL
 - Open-Meteo API
-- `psycopg2`, `requests`, `APScheduler`, `PyYAML`, `pandas`, `matplotlib`
+- `psycopg2`, `requests`, `APScheduler`, `PyYAML`, `pandas`
 
 ## Wiki Pages
 
@@ -44,7 +44,7 @@ Open-Meteo API -> Extract -> raw_weather -> Transform -> fact_weather
 - [Tools and Setup](#tools-and-setup)
 - [Configuration](#configuration)
 - [Alerting](#alerting)
-- [Backfill and Analysis](#backfill-and-analysis)
+- [Analysis](#analysis)
 - [Testing](#testing)
 - [Troubleshooting](#troubleshooting)
 - [Scope and Stretch Goals](#scope-and-stretch-goals)
@@ -57,7 +57,7 @@ WeatherPulse demonstrates a complete weather workflow from API extraction throug
 
 ### Core Deliverable
 
-The repository should fetch weather data, store raw responses, transform observations, load them safely, detect severe conditions, run on a schedule, backfill historical data, and demonstrate analytical queries in a video.
+The repository should fetch weather data, store raw responses, transform observations, load them safely, detect severe conditions, run on a schedule, and demonstrate analytical queries in a video.
 
 ### Scope
 
@@ -134,7 +134,7 @@ Threshold matches: `alert_id`, `weather_id`, `city_id`, alert type, severity, me
 7. Add PostgreSQL loading and upserts.
 8. Implement threshold checks.
 9. Add one-time and scheduled execution.
-10. Add backfill, analysis, tests, and the demo video.
+10. Add analysis, tests, and the demo video.
 
 ## Commands
 
@@ -193,9 +193,11 @@ Suggested alert types:
 
 The demonstration should show at least one record in `weather_alert`. A lower temporary demonstration threshold may be used if documented.
 
-## Backfill and Analysis
+## Analysis
 
-Backfill creates enough observations to demonstrate trends, city comparisons, and alert behavior. The notebook should include row counts, sample records, average temperature by city, daily temperature trends, precipitation totals, alert summaries, and charts.
+The notebook in `notebooks/analysis.ipynb` provides a quick summary of the data in the database so you can verify the pipeline worked during a demo. It reports row counts per table (`dim_city`, `raw_weather`, `fact_weather`, `weather_alert`), the number of alerts triggered by city and type, and the most recent fetch time.
+
+To build up enough data for a meaningful demo, either let the scheduler run for a while or run the pipeline a few times with `python -m src.scheduler --run-once`.
 
 ```sql
 SELECT c.name, DATE(f.observed_at) AS observation_date,
@@ -259,7 +261,7 @@ Review threshold values, confirm `fact_weather` contains matching measurements, 
 - Raw and structured layers
 - Threshold alerts
 - Scheduled execution
-- Backfill and notebook analysis
+- Notebook analysis
 
 ### Future Enhancements
 
@@ -300,7 +302,7 @@ Use this section as a running project journal.
 4. Create the repository structure.
 5. Add configuration and environment handling.
 6. Build extraction, transformation, loading, and alerting.
-7. Add scheduling and backfill.
+7. Add scheduling.
 8. Create analysis queries and charts.
 9. Test the complete pipeline.
 10. Record the final demonstration.
@@ -313,6 +315,6 @@ Use this section as a running project journal.
 - Show records in `raw_weather` and `fact_weather`.
 - Show at least one `weather_alert` record.
 - Run analytical queries.
-- Display notebook charts.
+- Display notebook summary stats.
 - Demonstrate one-time or scheduled execution.
 
