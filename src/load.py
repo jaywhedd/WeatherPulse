@@ -35,7 +35,7 @@ def get_connection():
         raise
  
  
-def upsert(conn, table, columns, values, conflict_cols):
+def upsert(conn, table, columns, values, conflict_cols, id_column=None):
     """Generic INSERT ... ON CONFLICT DO UPDATE, returning the row id.
  
     Parameters
@@ -45,9 +45,11 @@ def upsert(conn, table, columns, values, conflict_cols):
     columns : list[str]
     values : tuple
     conflict_cols : list[str]   columns forming the unique constraint
+    id_column : str, optional   primary key column; defaults to "{table}_id"
     """
-    id_column = f"{table}_id"
- 
+    if id_column is None:
+        id_column = f"{table}_id"
+
     col_list = ", ".join(columns)
     placeholders = ", ".join(["%s"] * len(columns))
     conflict_list = ", ".join(conflict_cols)
@@ -92,6 +94,7 @@ def upsert_city(conn, name, country, latitude, longitude):
         columns=["name", "country", "latitude", "longitude"],
         values=(name, country, latitude, longitude),
         conflict_cols=["name", "country"],
+        id_column="city_id",
     )
  
  
@@ -127,6 +130,7 @@ def upsert_fact_weather(conn, city_id, observed_at, temperature_c,
             condition, raw_weather_id,
         ),
         conflict_cols=["city_id", "observed_at"],
+        id_column="weather_id",
     )
  
  
