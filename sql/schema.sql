@@ -1,5 +1,6 @@
 -- WeatherPulse Schema
 -- Run: psql -U postgres -d weatherpulse -f sql/schema.sql
+# meteo only can access data through location x,y not name of the place
 
 -- City reference data
 CREATE TABLE IF NOT EXISTS dim_city (
